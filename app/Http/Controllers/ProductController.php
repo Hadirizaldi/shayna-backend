@@ -36,7 +36,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         Product::create($data);
         return redirect()->route('product.index');
@@ -55,15 +55,24 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Product::findOrFail($id);
+
+        return view('pages.products.edit')->with([
+            'item' => $item,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        $item = Product::findOrFail($id);
+        $item->update($data);
+
+        return redirect()->route('product.index');
+        // return redirect('product') // harus melihat dulu route:list agar tau pengarahan yang tepat di routing list;
     }
 
     /**
