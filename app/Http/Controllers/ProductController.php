@@ -21,11 +21,11 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource.s
      */
     public function create()
     {
-        //
+        return view('pages.products.create');
     }
 
     /**
