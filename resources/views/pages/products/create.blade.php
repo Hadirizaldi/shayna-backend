@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
           <label for="price" class="form-control-label">Harga Barang</label>
-          <input type="number" 
+          <input type="number" min="0" 
             name="price" 
             value="{{ old('price') }}"
             class="form-control @error('price') is-invalid @enderror"/>
@@ -40,16 +40,16 @@
         </div>
         <div class="form-group">
           <label for="quantity" class="form-control-label">Banyak Barang</label>
-          <input type="number" 
+          <input type="number" min="0" 
             name="quantity" 
             value="{{ old('quantity') }}"
             class="form-control @error('quantity') is-invalid @enderror"/>
           @error('quantity') <div class="text-muted">{{ $message }}</div> @enderror
         </div>
         <div class="form-group">
-          <div class="btn btn-primary btn-block" type="submit">
+          <button class="btn btn-primary btn-block" type="submit">
             Tambah Barang
-          </div>
+          </button>
         </div>
       </form>
     </div>

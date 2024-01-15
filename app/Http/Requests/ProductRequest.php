@@ -19,6 +19,16 @@ class ProductRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'name' => strtolower($this->name),
+            'type' => strtolower($this->type),
+            'description' => strtolower($this->description),
+        ]);
+    }
+
     public function rules(): array
     {
         return [
