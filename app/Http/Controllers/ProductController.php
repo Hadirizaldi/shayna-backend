@@ -82,6 +82,9 @@ class ProductController extends Controller
         $item = Product::findOrFail($id);
         $item->delete();
 
+        // saat product di delete maka semua product id akan di delete juga
+        ProductGallery::where('products_id', $id)->delete();
+
         return redirect()->route('product.index');
     }
 
