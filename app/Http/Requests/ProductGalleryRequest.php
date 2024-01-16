@@ -43,6 +43,7 @@ class ProductGalleryRequest extends FormRequest
         ];
     }
 
+    // funciton for check unique is_default if value true
     protected function uniqueDefaultRule($productId)
     {
         return Rule::unique('product_galleries')
