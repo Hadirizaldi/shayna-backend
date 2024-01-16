@@ -17,7 +17,7 @@ class ProductGallery extends Model
 
     protected $hidden = [];
 
-    public function getPhoto($value)
+    public function getPhotoAttribute($value)
     {
         return url('storage/' . $value);
     }
