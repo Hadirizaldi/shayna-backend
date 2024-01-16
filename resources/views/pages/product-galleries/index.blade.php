@@ -68,11 +68,11 @@
                     </a>
                 </div>
                 <div class="modal-body">
-                    Apakah Anda yakin ingin menghapus produk "{{ $item->name }}"?
+                    Apakah Anda yakin ingin menghapus Gambar produk - "{{ $item->product->name }}"?
                 </div>
                 <div class="modal-footer d-flex align-items-start justify-content-end">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                  <form action="{{ route('product.destroy', $item->id) }}" method="post" class="mr-2">
+                  <form action="{{ route('product-galleries.destroy', $item->id) }}" method="post" class="mr-2">
                       @method('delete')
                       @csrf
                       <button type="submit" class="btn btn-danger">Hapus</button>
