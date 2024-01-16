@@ -29,9 +29,9 @@
             class="form-control @error('photo') is-invalid @enderror"/>
           @error('photo') <div class="text-muted">{{ $message }}</div> @enderror
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 d-flex flex-column">
           <label for="is_default" class="form-control-label">Jadikan Default</label>
-          <br>
+          {{-- <br>
           <label>
             <input type="radio" 
               name="is_default" 
@@ -44,7 +44,23 @@
               name="is_default" 
               value="0"
               class="form-control @error('is_default') is-invalid @enderror"/> Tidak
-          </label>
+          </label> --}}
+          <div class="form-check ">
+            <input class="form-check-input @error('is_default') is-invalid @enderror"
+              type="radio" 
+              name="is_default" 
+              id="inlineRadio1" 
+              value="1">
+            <label class="form-check-label" for="inlineRadio1">Ya</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input @error('is_default') is-invalid @enderror" 
+              type="radio" 
+              name="is_default" 
+              id="inlineRadio2" 
+              value="0">
+            <label class="form-check-label" for="inlineRadio2">Tidak</label>
+          </div>  
           @error('is_default') <div class="text-muted">{{ $message }}</div> @enderror
         </div>
         <div class="form-group">
