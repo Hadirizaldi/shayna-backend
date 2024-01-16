@@ -10,7 +10,7 @@
             </div>
             <div class="card-body--">
               <div class="table-stats order-table ov-h">
-                <table class="table">
+                <table class="table table-striped">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -38,13 +38,11 @@
                         {{-- <a href="#" class="btn btn-primary btn-sm"> --}}
                           <i class="fa fa-pencil"></i>
                         </a>
-                        {{-- <form action="{{ route('products.destroy', $item->id) }}" method="post" class="d-inline" @csrf> --}}
-                        <form action="#" method="post" class="d-inline">
-                          @method('delete')
-                          <button class="btn btn-danger btn-sm">
-                            <i class="fa fa-trash"></i>
-                          </button>
-                        </form>
+                        <button class="btn btn-danger btn-sm" 
+                          data-toggle="modal" 
+                          data-target="#deleteConfirmationModal{{ $item->id }}">
+                          <i class="fa fa-trash "></i>
+                      </button>
                       </td> 
                     </tr>
                     @empty
@@ -63,3 +61,33 @@
       </div>
     </div>
 @endsection
+
+@foreach ($items as $item)
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="modal fade" id="deleteConfirmationModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel{{ $item->id }}" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-flex">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel{{ $item->id }}">Konfirmasi Penghapusan</h5>
+                    <a type="button" data-dismiss="modal" 
+                      aria-label="Close" aria-hidden="true" 
+                      class="text-danger fs-4 fw-bolder">
+                      <i class="fa fa-times-circle"></i>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yakin ingin menghapus produk "{{ $item->name }}"?
+                </div>
+                <div class="modal-footer d-flex align-items-start justify-content-end">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                  <form action="{{ route('product.destroy', $item->id) }}" method="post" class="mr-2">
+                      @method('delete')
+                      @csrf
+                      <button type="submit" class="btn btn-danger">Hapus</button>
+                  </form>
+              </div>
+              
+            </div>
+        </div>
+    </div>
+@endforeach

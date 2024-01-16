@@ -10,7 +10,7 @@
       <form action="{{ route('product.update', $item->id) }}" method="POST">
         @method('PUT')
         @csrf
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="name" class="form-control-label">Nama Barang</label>
           <input type="text" 
             name="name" 
@@ -18,7 +18,7 @@
             class="form-control @error('name') is-invalid @enderror"/>
           @error('name') <div class="text-muted">{{ $message }}</div> @enderror
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="type" class="form-control-label">Tipe Barang</label>
           <input type="text" 
             name="type" 
@@ -26,13 +26,13 @@
             class="form-control @error('type') is-invalid @enderror"/>
           @error('type') <div class="text-muted">{{ $message }}</div> @enderror
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="description" class="form-control-label">Deskripsi Barang</label>
           <textarea name="description" 
             class="ckeditor form-control @error('description') is-invalid @enderror">{{ old('description') ? old('description') : $item->description }}</textarea>
           @error('description') <div class="text-muted">{{ $message }}</div> @enderror
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="price" class="form-control-label">Harga Barang</label>
           <input type="number" min="0" 
             name="price" 
@@ -40,7 +40,7 @@
             class="form-control @error('price') is-invalid @enderror"/>
           @error('price') <div class="text-muted">{{ $message }}</div> @enderror
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="quantity" class="form-control-label">Banyak Barang</label>
           <input type="number" min="0" 
             name="quantity" 
