@@ -38,7 +38,7 @@ class ProductGalleryRequest extends FormRequest
             'photo' => 'required|image',
             'is_default' => [
                 'boolean',
-                $this->uniqueDefaultRule($productId),
+                // $this->uniqueDefaultRule($productId),
             ],
         ];
     }

@@ -45,6 +45,14 @@ class ProductGalleryController extends Controller
     public function store(ProductGalleryRequest $request)
     {
         $data = $request->validated();
+
+        // Jika is_default ditandai, set gambar default sebelumnya menjadi tidak default
+        if ($data['is_default']) {
+            ProductGallery::where('products_id', $data['products_id'])
+                ->where('is_default', true)
+                ->update(['is_default' => false]);
+        }
+        // save url for photo
         $data['photo'] = $request->file('photo')->store(
             'assets/product',
             'public'

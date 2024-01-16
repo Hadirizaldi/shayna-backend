@@ -31,20 +31,6 @@
         </div>
         <div class="form-group mb-3 d-flex flex-column">
           <label for="is_default" class="form-control-label">Jadikan Default</label>
-          {{-- <br>
-          <label>
-            <input type="radio" 
-              name="is_default" 
-              value="1"
-              class="form-control @error('is_default') is-invalid @enderror"/> Ya
-          </label>
-          &nbsp;
-          <label>
-            <input type="radio" 
-              name="is_default" 
-              value="0"
-              class="form-control @error('is_default') is-invalid @enderror"/> Tidak
-          </label> --}}
           <div class="form-check ">
             <input class="form-check-input @error('is_default') is-invalid @enderror"
               type="radio" 
