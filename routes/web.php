@@ -24,6 +24,7 @@ Auth::routes(['register' => false]);
 Route::resource('product', ProductController::class)->except([
   'show'
 ]);
+Route::get('product/{id}/gallery', [ProductController::class, 'gallery'])->name('product.gallery');
 
 // Gallery
 Route::resource('product-galleries', ProductGalleryController::class);
