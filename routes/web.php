@@ -27,4 +27,6 @@ Route::resource('product', ProductController::class)->except([
 Route::get('product/{id}/gallery', [ProductController::class, 'gallery'])->name('product.gallery');
 
 // Gallery
-Route::resource('product-galleries', ProductGalleryController::class);
+Route::resource('product-galleries', ProductGalleryController::class)->except([
+  'show', 'edit', 'update'
+]);
