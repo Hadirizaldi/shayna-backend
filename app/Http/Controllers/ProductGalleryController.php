@@ -91,8 +91,21 @@ class ProductGalleryController extends Controller
      */
     public function destroy(string $id)
     {
-        $item = ProductGallery::findOrFail($id);
-        $item->delete();
+        $gallery = ProductGallery::findOrFail($id);
+
+        // Jika gambar yang dihapus memiliki is_default === 1, cari gambar default lainnya
+        if ($gallery->is_default) {
+            $otherImage = ProductGallery::where('products_id', $gallery->products_id)
+                ->where('id', '!=', $gallery->id)
+                ->first();
+
+            // Jika ada gambar default lainnya, atur gambar tersebut sebagai default
+            if ($otherImage) {
+                $otherImage->update(['is_default' => true]);
+            }
+        }
+        // hapus photo
+        $gallery->delete();
 
         return redirect()->route('product-galleries.index');
     }
